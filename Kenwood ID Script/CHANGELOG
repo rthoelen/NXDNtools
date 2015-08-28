@@ -1,0 +1,8 @@
+Kenwood ID script
+
+version 1.0.1
+
+added version information, changed a hard-coded assumption in the
+code about the Raspberry Pi address.
+
+version 1.0.0 -- original script
