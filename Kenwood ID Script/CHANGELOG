@@ -1,5 +1,9 @@
 Kenwood ID script
 
+version 1.0.2
+
+fixed GID
+
 version 1.0.1
 
 added version information, changed a hard-coded assumption in the

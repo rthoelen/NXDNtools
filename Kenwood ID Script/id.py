@@ -1,7 +1,6 @@
-# Copyright (C) 2015 Robert Thoelen
-# Version 1.0.1
+#Copyright (C) 2015 Robert Thoelen
+#Version 1.0.2
 
-#
 #Licensed under the Apache License, Version 2.0 (the "License");
 #you may not use this file except in compliance with the License.
 #You may obtain a copy of the License at
@@ -37,7 +36,7 @@ UID = 929
 # To keep things simple, message must be 14 characters long
 # If shorter than 14 chars, add spaces to get to 14
 
-MESSAGE = "N1XDN /R    CT"
+MESSAGE = "ENFLD NEXEDGE "
 ################
 
 # Some definitions
@@ -46,10 +45,17 @@ UDP_PORT = 64001
 UDP_PORT2 = 64000
 SEQ = 0xf1
 
-# First, unpack UID
+# First, unpack UID and GID
 
 UID1 = UID >> 8
 UID2 = UID & 0xff
+
+# GID needs to be reverse
+
+GID1 = GID >> 8
+GID2 = GID & 0xff
+
+
 
 # Extract IP address
 [IP1,IP2,IP3,IP4] = struct.unpack("!BBBB",socket.inet_aton(R_IP))
@@ -69,11 +75,10 @@ sock.sendto(string, (R_IP, UDP_PORT))
 time.sleep(0.05)
 
 # This next packet sends UID/GID and other info
-string = struct.pack('>HBBHHBBBBHHHHHHBBHBBHBBHHBBHBBHB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP4, IP3, IP2, IP1,
+string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP4, IP3, IP2, IP1,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a10,
-	RAN, 0x00,0x0000, 0x01, UID1, 0x2000, UID2, 0x00, 0x0000, 0x0000,  0x01, UID1,
-	0x2000, UID2, 0x00, GID, 0x00)   # GID is 0000
-
+	RAN, 0x00,0x0000, 0x01, UID1, 0x20,GID1, UID2, 0x00, GID2, 0x00, 0x0000,  0x01, UID1,
+	0x20, GID1, UID2, 0x00, GID2, 0x00)   # GID is 0000
 sock.sendto(string, (R_IP, UDP_PORT2))
 
 time.sleep(0.2)
@@ -111,7 +116,7 @@ time.sleep(0.2)
 
 
 # This string signals end of transmission
-string = struct.pack('>HHBBBBHHHHHH',0x8bcc, 0x0004, IP8,IP7,IP6,IP5,0x4b57,0x4e45, UID, 0,0x0100,0)
+string = struct.pack('>HHBBBBHHHHHH',0x8bcc, 0x0004, IP8,IP7,IP6,IP5,0x4b57,0x4e45, UID, GID,0x0100,0)
 sock.sendto(string, (R_IP, UDP_PORT))
 time.sleep(0.2)
 sock.sendto(string,(R_IP, UDP_PORT))
