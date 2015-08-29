@@ -1,5 +1,6 @@
-#Copyright (C) 2015 Robert Thoelen
-#Version 1.0.2
+# Copyright (C) 2015 Robert Thoelen
+# version 1.0.3 
+
 
 #Licensed under the Apache License, Version 2.0 (the "License");
 #you may not use this file except in compliance with the License.
@@ -36,7 +37,7 @@ UID = 929
 # To keep things simple, message must be 14 characters long
 # If shorter than 14 chars, add spaces to get to 14
 
-MESSAGE = "ENFLD NEXEDGE "
+MESSAGE = "ENFIELD NXEDGE"
 ################
 
 # Some definitions
@@ -54,7 +55,6 @@ UID2 = UID & 0xff
 
 GID1 = GID >> 8
 GID2 = GID & 0xff
-
 
 
 # Extract IP address
@@ -75,7 +75,7 @@ sock.sendto(string, (R_IP, UDP_PORT))
 time.sleep(0.05)
 
 # This next packet sends UID/GID and other info
-string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP4, IP3, IP2, IP1,
+string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a10,
 	RAN, 0x00,0x0000, 0x01, UID1, 0x20,GID1, UID2, 0x00, GID2, 0x00, 0x0000,  0x01, UID1,
 	0x20, GID1, UID2, 0x00, GID2, 0x00)   # GID is 0000
@@ -91,7 +91,7 @@ SEQ += 1
 # This packet is first 8 chars of OTAA
 
 
-string = struct.pack('>HBBHHBBBBHHHHHHHHHBBBBBBBBHBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP4, IP3, IP2, IP1,
+string = struct.pack('>HBBHHBBBBHHHHHHHHHBBBBBBBBHBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a01, 0xd600, 0x0068, 0x3f04, 0x82, ord(MESSAGE[0]), 0x14,
 	ord(MESSAGE[2]), ord(MESSAGE[1]), 0x00, ord(MESSAGE[3]), 0x68, 0x3f04, 0x82, ord(MESSAGE[4]), 0x24,
 	ord(MESSAGE[6]), ord(MESSAGE[5]), 0x00, ord(MESSAGE[7]))
@@ -105,7 +105,7 @@ SEQ += 1
 
 # This packet is last 8 chars of OTAA
 
-string = struct.pack('>HBBHHBBBBHHHHHHHHHBBBBBBBBHBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP4, IP3, IP2, IP1,
+string = struct.pack('>HBBHHBBBBHHHHHHHHHBBBBBBBBHBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a80, 0x9640, 0x0e68, 0x3f04, 0x82, ord(MESSAGE[8]), 0x34,
 	ord(MESSAGE[10]), ord(MESSAGE[9]), 0x00, ord(MESSAGE[11]), 0x68, 0x3f04, 0x82, ord(MESSAGE[12]), 0x44,
 	0x02, ord(MESSAGE[13]), 0x00, 0xa7)

@@ -1,5 +1,9 @@
 Kenwood ID script
 
+version 1.0.3
+
+changed IP addresses in the packets to be what I think is more correct
+
 version 1.0.2
 
 fixed GID
