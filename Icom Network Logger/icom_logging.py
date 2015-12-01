@@ -7,8 +7,8 @@ import time
 
 OUTPUT_HTMLFILE = "/usr/local/www/nginx/icom.html"
 
-UDP_IP = "0.0.0.0"
-UDP_PORT = 41300
+UDP_IP = "127.0.0.1"
+UDP_PORT = 50001
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
 sock.bind((UDP_IP, UDP_PORT))
 
@@ -37,7 +37,7 @@ t.start()
 while True:
     data, addr = sock.recvfrom(105) # buffer size is 1024 bytes
     h = ":".join("{0:x}".format(ord(c)) for c in data)
-    if (ord(data[38]) == 0x1c):
+    if ((ord(data[38]) == 0x1c) and (ord(data[39]) == 0x21)):
 #        d = struct.unpack(">HHHHHHHHHHHHBBBB",data)
 #        print "unpacked:", d
 	UID = (ord(data[48]) << 8) + ord(data[49])
@@ -47,5 +47,5 @@ while True:
         
 	if ord(data[45]) == 1:
 		packetlist.appendleft("<tr><td> "+ time.strftime("%c, %z") + "</td><td> " + str(UID) + "</td><td> " + str(GID) + "</td><td> PTT On</td></tr>")
-	else:
+	if ord(data[45]) == 8:
 		packetlist.appendleft("<tr><td> "+ time.strftime("%c, %z") + "</td><td> " + str(UID) + "</td><td> " + str(GID) + "</td><td> PTT Off</td></tr>")
