@@ -1,5 +1,11 @@
 Kenwood ID script
 
+version 1.1
+
+fixed packet size for start control packet
+added stop control packet
+
+
 version 1.0.3
 
 changed IP addresses in the packets to be what I think is more correct
