@@ -6,7 +6,7 @@ import threading
 import time
 import csv
 
-from rpt_list import rpt_list
+from kw_rpt_list import rpt_list
 from tg_dict import tg_dict
 
 OUTPUT_HTMLFILE = "/usr/local/www/nginx/kenwood.html"
@@ -87,4 +87,4 @@ while True:
 	if ord(data[28]) == 1:
 		packetlist.appendleft("<tr><td><center> "+ time.strftime("%c, %z") + "</center></td><td><center> " + uidstr + "</center></td><td><center> " + gidstr + "</center></td><td><center> " + rpt + "</center></td><td><center>" + str(RAN) + "</center></td><td><center>PTT On</center></td></tr>")
 	else:
-		packetlist.appendleft("<tr><td><center> "+ time.strftime("%c, %z") + "</center></td><td><center> " + uidstr + "</center></td><td><center> " + gidstr + "</center></td><td><center> " + rpt + "</center></td><td><center>" + str(RAN) + "</center></td><td><center>PTT Off</center></td></tr>")
+		packetlist.appendleft("<tr bgcolor='#87CEFA'><td><center> "+ time.strftime("%c, %z") + "</center></td><td><center> " + uidstr + "</center></td><td><center> " + gidstr + "</center></td><td><center> " + rpt + "</center></td><td><center>" + str(RAN) + "</center></td><td><center>PTT Off</center></td></tr>")
