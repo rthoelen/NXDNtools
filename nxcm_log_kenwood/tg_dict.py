@@ -3,6 +3,7 @@ tg_dict = {
 	1    : 'Local<br/>(<b>1</b>)',
 	2    : 'Local<br/>(<b>2</b>)',
 	1200 : 'Florida<br/>(<b>1200</b>)',
+	5000 : 'Arkansas<br/>(<b>5000</b>)',
 	5500 : 'Wisconsin<br/>(<b>5500</b>)',
 	9000 : 'CT Expanded<br/>(<b>9000</b>)',
 	9001 : 'Connecticut<br/>(<b>9001</b>)',
