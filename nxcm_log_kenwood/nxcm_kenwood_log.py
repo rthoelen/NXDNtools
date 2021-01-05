@@ -42,7 +42,7 @@ t = threading.Thread(target=writeout)
 t.start()
 
 uid_dict = {}
-with open('uid.csv') as csvfile:
+with open('nxdn.csv') as csvfile:
 	uidreader = csv.reader(csvfile, delimiter=',', quotechar='|')
 	for row in uidreader:
                 if len(row) < 1:
