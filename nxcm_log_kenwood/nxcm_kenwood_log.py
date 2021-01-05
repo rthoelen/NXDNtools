@@ -49,8 +49,8 @@ with open('nxdn.csv') as csvfile:
                     continue
 		if row[0].isdigit():
 			tempstr = row[1] + "  -  " + row[2]
-			if len(row[3]) > 0:
-				tempstr += "  -  " + row[3]
+			if len(row[4]) > 0:
+				tempstr += "  -  " + row[4]
 			tempstr +=  "<br/>(<b>" + row[0] + "</b>)"
 			uid_dict[row[0]] = tempstr
 		else:
