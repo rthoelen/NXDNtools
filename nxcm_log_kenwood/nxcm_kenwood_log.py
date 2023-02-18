@@ -27,7 +27,7 @@ def writeout():
 		outfile.write("<meta http-equiv='refresh' content='10'>")
 		outfile.write("</head><body><center><h2>NXCM Kenwood Log</h2></center>")
 		outfile.write("<br/><br/><br/><p>")
-		outfile.write("<p><center>Don't see your name with your ID?  Sign up at <a href='http://radioid.net'>https://radioid.net/</a></center></p>")
+		outfile.write("<p><center>Don't see your name with your ID?  Sign up at <a href='https://radioid.net'>https://radioid.net/</a></center></p>")
 		outfile.write("<br/><br/><br/><p>")
 		outfile.write("<table border='1' width='100%' style='border-collapse:collapse'><tr><td width='260'><b>Last Heard</b></td><td width='400'><b>User / UID</b></td> \
 			<td width='200'><b>Talkgroup / GID</b></td><td width='200'><b>Repeater</b></td><td><b>RX RAN</b></td><td width='90'><b>Status</b></td></b></tr>")
